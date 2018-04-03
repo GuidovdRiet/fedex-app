@@ -12,7 +12,7 @@ export default class App extends Component {
   }
 
   userIsHome() {
-    console.log('Home');
+    console.log("Home");
   }
 
   UserIsNotHome() {
@@ -22,18 +22,12 @@ export default class App extends Component {
   render() {
     return (
       <Container>
-        <UserIsHome
-          onPress={this.userIsHome}
-          title="Home"
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
-        />
-        <UserIsNotHome
-          onPress={this.userIsNotHome}
-          title="Not Home"
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
-        />
+        <UserIsHomeContainer onPress={this.userIsHome}>
+          <UserIsHomeButton>Home</UserIsHomeButton>
+        </UserIsHomeContainer>
+        <UserIsNotHomeContainer onPress={this.UserIsNotHome}>
+          <UserIsNotHomeButton>Not Home</UserIsNotHomeButton>
+        </UserIsNotHomeContainer>
       </Container>
     );
   }
@@ -41,17 +35,23 @@ export default class App extends Component {
 
 const Container = styled.View`
   flex: 1;
-  background-color: #282A36;
+  justify-content: center;
+  align-items: center;
+  background-color: #0000;
 `;
 
-const UserIsHome = styled.Button`
-  background: blue;
-  width: 200px;
-  height: 50px;
+const UserIsHomeContainer = styled.TouchableHighlight`
+  background-color: #f7fff3;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  width: 90%;
 `;
 
-const UserIsNotHome = styled.Button`
-  background: blue;
-  width: 200px;
-  height: 50px;
+const UserIsNotHomeContainer = styled(UserIsHomeContainer)`
+  background-color: #fff0f1;
 `;
+
+const UserIsHomeButton = styled.Text``;
+
+const UserIsNotHomeButton = styled(UserIsHomeButton)``;
