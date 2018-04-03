@@ -41,7 +41,7 @@ export default class App extends Component {
 
 const Container = styled.View`
   flex: 1;
-  background-color: red;
+  background-color: #282A36;
 `;
 
 const UserIsHome = styled.Button`
