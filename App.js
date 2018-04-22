@@ -1,57 +1,31 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
 import styled from "styled-components";
+import { StyleSheet, Text, View, Button, Image } from "react-native";
+import { StackNavigator } from "react-navigation";
+import io from "socket.io-client";
 
-export default class App extends Component {
-  constructor() {
-    super();
+import Main from "./components/Main";
+import AddNote from "./components/userIsHome/AddNote";
 
-    this.state = {
-      userIsHome: false
-    };
-  }
+const socketClient = io("http://45.77.159.108:7000");
 
-  userIsHome() {
-    console.log("Home");
-  }
+const mapSocketClientToNavigation = Component => {
+  return class extends Component {
+    render() {
+      const { navigation, ...other } = this.props;
+      const {
+        state: { params }
+      } = navigation;
+      return (
+        <Component {...this.props} {...params} socketClient={socketClient} />
+      );
+    }
+  };
+};
 
-  UserIsNotHome() {
-    console.log("Not Home");
-  }
+const App = StackNavigator({
+  Home: { screen: mapSocketClientToNavigation(Main) },
+  AddNote: { screen: mapSocketClientToNavigation(AddNote) }
+});
 
-  render() {
-    return (
-      <Container>
-        <UserIsHomeContainer onPress={this.userIsHome}>
-          <UserIsHomeButton>Home</UserIsHomeButton>
-        </UserIsHomeContainer>
-        <UserIsNotHomeContainer onPress={this.UserIsNotHome}>
-          <UserIsNotHomeButton>Not Home</UserIsNotHomeButton>
-        </UserIsNotHomeContainer>
-      </Container>
-    );
-  }
-}
-
-const Container = styled.View`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-  background-color: #0000;
-`;
-
-const UserIsHomeContainer = styled.TouchableHighlight`
-  background-color: #f7fff3;
-  justify-content: center;
-  align-items: center;
-  height: 150px;
-  width: 90%;
-`;
-
-const UserIsNotHomeContainer = styled(UserIsHomeContainer)`
-  background-color: #fff0f1;
-`;
-
-const UserIsHomeButton = styled.Text``;
-
-const UserIsNotHomeButton = styled(UserIsHomeButton)``;
+export default () => <App />;
