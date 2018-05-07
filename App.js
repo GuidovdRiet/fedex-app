@@ -1,61 +1,39 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
 import styled from 'styled-components';
+import { StyleSheet, Text, View, Button, Image } from 'react-native';
+import { StackNavigator } from 'react-navigation';
+import io from 'socket.io-client';
 
+import Main from './components/Main';
+import AddNote from './components/userIsHome/AddNote';
+
+const socketClient = io('http://45.77.159.108:7000');
+
+const mapSocketClientToNavigation = Component => {
+    return class extends Component {
+        render() {
+            const { navigation, ...other } = this.props;
+            const {
+                state: { params }
+            } = navigation;
+            return (
+                <Component
+                    {...this.props}
+                    {...params}
+                    socketClient={socketClient}
+                />
+            );
+        }
+    };
+};
+// TODO: Maak van app weer een class
 // TODO: run BG task die luistert voor socket
 // TODO: Fix notifications (ook permissions van user etc)
 // TODO: On socket event > verstuur notification
 // TODO: Pas nadat dit gebeurd is mag je je informatie updaten
-export default class App extends Component {
-    constructor() {
-        super();
+const App = StackNavigator({
+    Home: { screen: mapSocketClientToNavigation(Main) },
+    AddNote: { screen: mapSocketClientToNavigation(AddNote) }
+});
 
-        this.state = {
-            userIsHome: false
-        };
-    }
-
-    userIsHome() {
-        console.log('Home');
-    }
-
-    userIsNotHome() {
-        console.log('Not Home');
-    }
-
-    render() {
-        return (
-            <Container>
-                <UserIsHomeContainer onPress={this.userIsHome}>
-                    <UserIsHomeButton>Home</UserIsHomeButton>
-                </UserIsHomeContainer>
-                <UserIsNotHomeContainer onPress={this.userIsNotHome}>
-                    <UserIsNotHomeButton>Not Home</UserIsNotHomeButton>
-                </UserIsNotHomeContainer>
-            </Container>
-        );
-    }
-}
-
-const Container = styled.View`
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-    background-color: #0000;
-`;
-
-const UserIsHomeContainer = styled.TouchableHighlight`
-    background-color: #f7fff3;
-    justify-content: center;
-    align-items: center;
-    height: 150px;
-    width: 90%;
-`;
-
-const UserIsNotHomeContainer = styled(UserIsHomeContainer)`
-    background-color: #fff0f1;
-`;
-
-const UserIsHomeButton = styled.Text``;
-
-const UserIsNotHomeButton = styled(UserIsHomeButton)``;
+export default () => <App />;
