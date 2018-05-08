@@ -80,7 +80,5 @@ const SendNoteContainer = styled.TouchableHighlight`
 
 const SendNoteButton = styled.Text`
   color: #fff;
-  margin: 0;
-  padding: 0;
   font-size: 18;
 `;
