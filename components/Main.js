@@ -82,7 +82,7 @@ const LogoWrapper = styled.View`
 const Logo = styled.Image``;
 
 const UserIsHomeContainer = styled.TouchableHighlight`
-    background-color: #f7fff3;
+    background-color: #4D1C8A;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -99,7 +99,7 @@ const UserIsHomeContentContainer = styled.View`
 const UserIsNotHomeContentContainer = styled(UserIsHomeContentContainer)``;
 
 const UserIsHomeButton = styled.Text`
-    color: #818181;
+    color: #fff;
     font-size: 18;
     margin-left: 15;
 `;
@@ -112,6 +112,6 @@ const UserIsHomeIcon = styled.Image`
 `;
 
 const UserIsNotHomeContainer = styled(UserIsHomeContainer)`
-    background-color: #fff0f1;
+    background-color: #F8662E;
     margin-top: 20;
 `;

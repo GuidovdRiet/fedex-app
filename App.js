@@ -32,8 +32,6 @@ const mapSocketClientToNavigation = Component => {
 // Wel thuis bent -> socket uitsturen uit (true) -> naar volgende scherm
 // Niet thuis bent -> socket uitsturen niet thuis (false)  -> naar volgende scherm
 
-//
-
 // TODO: Naar socket luisteren delivery:init
 // TODO: Fix notifications (ook permissions van user etc)
 // TODO: On socket event (delivery:init, zie index.js van back-end) > verstuur notification
