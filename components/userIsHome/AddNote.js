@@ -5,7 +5,7 @@ class AddNote extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: "Useless Multiline Placeholder"
+      text: ""
     };
   }
   render() {
@@ -21,7 +21,7 @@ class AddNote extends Component {
           editable={true}
           maxLength={40}
           multiline={true}
-          numberOfLines={4}
+          numberOfLines={10}
           onChangeText={text => this.setState({ text })}
           value={this.state.text}
         />
