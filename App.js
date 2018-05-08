@@ -26,6 +26,7 @@ const mapSocketClientToNavigation = Component => {
         }
     };
 };
+
 // TODO: Maak van app weer een class
 // TODO: run BG task die luistert voor socket
 // TODO: Fix notifications (ook permissions van user etc)
