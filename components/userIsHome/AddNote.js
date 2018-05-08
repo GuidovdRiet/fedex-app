@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Text, TextInput, View } from "react-native";
 import styled from "styled-components";
+import { TouchableWithoutFeedback, Keyboard } from 'react-native';
 
 class AddNote extends Component {
   constructor(props) {
@@ -16,26 +17,28 @@ class AddNote extends Component {
 
   render() {
     return (
-      <AddNoteContainer
-        style={{
-          backgroundColor: this.state.text,
-          borderBottomColor: "#000000",
-          borderBottomWidth: 1
-        }}
-      >
-        <AddNoteInput
-          editable={true}
-          maxLength={40}
-          multiline={true}
-          numberOfLines={10}
-          onChangeText={text => this.setState({ text })}
-          value={this.state.text}
-        />
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+        <AddNoteContainer
+          style={{
+            backgroundColor: this.state.text
+          }}
+        >
+          <AddNoteInput
+            onPress={Keyboard.dismiss}
+            accessible={false}
+            editable={true}
+            maxLength={40}
+            multiline={true}
+            numberOfLines={10}
+            onChangeText={text => this.setState({ text })}
+            value={this.state.text}
+          />
 
-        <SendNoteContainer onPress={() => this.sendNote(this.state.text)}> 
-          <SendNoteButton>Submit</SendNoteButton>
-        </SendNoteContainer>
-      </AddNoteContainer>
+          <SendNoteContainer onPress={() => this.sendNote(this.state.text)}>
+            <SendNoteButton>Submit</SendNoteButton>
+          </SendNoteContainer>
+        </AddNoteContainer>
+      </TouchableWithoutFeedback>
     );
   }
 }
@@ -58,7 +61,7 @@ const AddNoteInput = styled.TextInput`
 `;
 
 const SendNoteContainer = styled.TouchableHighlight`
-  background-color: #4D1C8A;
+  background-color: #4d1c8a;
   display: flex;
   justify-content: center;
   align-items: center;
