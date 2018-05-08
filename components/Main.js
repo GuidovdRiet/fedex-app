@@ -11,10 +11,6 @@ class Main extends Component {
     title: "Home"
   };
 
-  componentDidMount() {
-    const { navigate } = this.props.navigation;
-  }
-
   _isUserHome(isHome) {
     const { navigate } = this.props.navigation;
     if (isHome) {
