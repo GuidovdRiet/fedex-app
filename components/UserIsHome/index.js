@@ -11,7 +11,7 @@ class AddNote extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: "Add your note..."
+      text: null
     };
   }
 
@@ -22,11 +22,7 @@ class AddNote extends Component {
   render() {
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-        <AddNoteContainer
-          style={{
-            backgroundColor: this.state.text
-          }}
-        >
+        <AddNoteContainer>
           <AddNoteInput
             onPress={Keyboard.dismiss}
             accessible={false}
@@ -34,7 +30,9 @@ class AddNote extends Component {
             maxLength={40}
             multiline={true}
             numberOfLines={10}
+            placeholder={"Add your note.."}
             onChangeText={text => this.setState({ text })}
+            onPress={console.log("test")}
             value={this.state.text}
           />
 
@@ -56,7 +54,6 @@ const AddNoteContainer = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
-  background: yellow;
 `;
 
 const AddNoteInput = styled.TextInput`

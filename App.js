@@ -5,7 +5,7 @@ import { StackNavigator } from 'react-navigation';
 import io from 'socket.io-client';
 
 import Main from './components/Main';
-import AddNote from './components/userIsHome/AddNote';
+import AddNote from './components/UserIsHome';
 import UserIsNotHome from './components/UserIsNotHome';
 
 // const socketClient = io('http://45.77.159.108:7000');

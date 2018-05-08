@@ -64,7 +64,6 @@ class UserIsNotHome extends Component {
 export default UserIsNotHome;
 
 const UserIsNotHomeContainer = styled.View`
-  background: red;
   flex: 1;
 `;
 
@@ -89,7 +88,6 @@ const ConfirmDateWrapper = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
-  background: yellow;
 `;
 
 const ConfirmDateContainer = styled.TouchableHighlight`

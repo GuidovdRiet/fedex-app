@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { StyleSheet, Text, View, Button, Image } from "react-native";
 
 // Components
-import AddNote from "./userIsHome/AddNote";
+import AddNote from "./UserIsHome";
 import UserIsNotHome from "./UserIsNotHome";
 
 class Main extends Component {
