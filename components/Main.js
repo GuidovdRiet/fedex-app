@@ -15,13 +15,15 @@ class Main extends Component {
     const { navigate } = this.props.navigation;
     if (isHome) {
       this.props.socketClient.emit("package:change-home-notification", {
-        atHome: true
+        atHome: true,
+        deliveryId: '5ae1bc56073bf525962418a6'
       });
       navigate("AddNote", { name: "Note" });
       console.log("Home");
     } else {
       this.props.socketClient.emit("package:change-home-notification", {
-        atHome: false
+        atHome: false,
+        deliveryId: '5ae1bc56073bf525962418a6'
       });
       console.log("Not Home");
     }
