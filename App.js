@@ -7,7 +7,8 @@ import io from 'socket.io-client';
 import Main from './components/Main';
 import AddNote from './components/userIsHome/AddNote';
 
-const socketClient = io('http://45.77.159.108:7000');
+// const socketClient = io('http://45.77.159.108:7000');
+const socketClient = io('http://localhost:7000');
 
 const mapSocketClientToNavigation = Component => {
     return class extends Component {
