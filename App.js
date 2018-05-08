@@ -6,6 +6,7 @@ import io from 'socket.io-client';
 
 import Main from './components/Main';
 import AddNote from './components/userIsHome/AddNote';
+import userIsNotHome from './components/userIsNotHome';
 
 // const socketClient = io('http://45.77.159.108:7000');
 const socketClient = io('http://localhost:7000');
@@ -39,7 +40,8 @@ const mapSocketClientToNavigation = Component => {
 
 const App = StackNavigator({
     Home: { screen: mapSocketClientToNavigation(Main) },
-    AddNote: { screen: mapSocketClientToNavigation(AddNote) }
+    AddNote: { screen: mapSocketClientToNavigation(AddNote) },
+    userIsNotHome: { screen: mapSocketClientToNavigation(userIsNotHome) }
 });
 
 export default () => <App />;

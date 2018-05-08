@@ -5,6 +5,7 @@ import { StyleSheet, Text, View, Button, Image } from 'react-native';
 
 // Components
 import AddNote from './userIsHome/AddNote';
+import userIsNotHome from './userIsNotHome';
 
 class Main extends Component {
     static navigationOptions = {
@@ -25,6 +26,7 @@ class Main extends Component {
                 atHome: false,
                 deliveryId: '5ae1bc56073bf525962418a6'
             });
+            navigate('userIsNotHome', { name: 'Note home'});
             console.log('Not Home');
         }
     }
@@ -38,7 +40,7 @@ class Main extends Component {
 
                 <UserIsHomeContainer
                     onPress={() => this._isUserHome(true)}
-                    underlayColor="#7CE065"
+                    underlayColor="#7FC285"
                 >
                     <UserIsHomeContentContainer>
                         <UserIsHomeIcon
@@ -50,7 +52,7 @@ class Main extends Component {
 
                 <UserIsNotHomeContainer
                     onPress={() => this._isUserHome(false)}
-                    underlayColor="#FF8389"
+                    underlayColor="#F45558"
                 >
                     <UserIsNotHomeContentContainer>
                         <UserIsHomeIcon

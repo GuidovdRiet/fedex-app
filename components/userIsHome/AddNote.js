@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import { Text, TextInput, View } from "react-native";
 import styled from "styled-components";
-import { TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { TouchableWithoutFeedback, Keyboard } from "react-native";
 
 class AddNote extends Component {
+  static navigationOptions = {
+    title: "Add note"
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -34,7 +38,10 @@ class AddNote extends Component {
             value={this.state.text}
           />
 
-          <SendNoteContainer onPress={() => this.sendNote(this.state.text)}>
+          <SendNoteContainer
+            onPress={() => this.sendNote(this.state.text)}
+            underlayColor="#7FC285"
+          >
             <SendNoteButton>Submit</SendNoteButton>
           </SendNoteContainer>
         </AddNoteContainer>
