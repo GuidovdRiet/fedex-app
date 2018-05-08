@@ -9,6 +9,11 @@ class AddNote extends Component {
       text: "Add your note..."
     };
   }
+
+  sendNote(note) {
+    console.log(note);
+  }
+
   render() {
     return (
       <AddNoteContainer
@@ -27,7 +32,7 @@ class AddNote extends Component {
           value={this.state.text}
         />
 
-        <SendNoteContainer>
+        <SendNoteContainer onPress={() => this.sendNote(this.state.text)}> 
           <SendNoteButton>Submit</SendNoteButton>
         </SendNoteContainer>
       </AddNoteContainer>
