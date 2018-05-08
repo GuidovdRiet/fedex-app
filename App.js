@@ -27,11 +27,17 @@ const mapSocketClientToNavigation = Component => {
     };
 };
 
-// TODO: Maak van app weer een class
-// TODO: run BG task die luistert voor socket
+// Om aan te geven of je thuis of niet thuis bent
+// Wel thuis bent -> socket uitsturen uit (true) -> naar volgende scherm
+// Niet thuis bent -> socket uitsturen niet thuis (false)  -> naar volgende scherm
+
+//
+
+// TODO: Naar socket luisteren delivery:init
 // TODO: Fix notifications (ook permissions van user etc)
 // TODO: On socket event (delivery:init, zie index.js van back-end) > verstuur notification
-// TODO: Pas nadat dit gebeurd is mag je je informatie updaten
+// TODO: Pas nadat dit gebeurd is mag je je informatie updaten (socket emitten)
+
 const App = StackNavigator({
     Home: { screen: mapSocketClientToNavigation(Main) },
     AddNote: { screen: mapSocketClientToNavigation(AddNote) }
