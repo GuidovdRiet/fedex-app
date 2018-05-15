@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { StyleSheet, Text, View, Button, Image } from "react-native";
-// import { StackNavigator } from "react-navigation";
-import { TabNavigator } from "react-navigation";
+
+import { TabNavigator, StackNavigator } from "react-navigation";
 import { Icon } from "react-native-elements";
 import io from "socket.io-client";
 
@@ -28,9 +28,15 @@ const mapSocketClientToNavigation = Component => {
   };
 };
 
-const App = TabNavigator({
+const StackNav = StackNavigator({
+  Home: { screen: mapSocketClientToNavigation(Main) },
+  AddNote: { screen: mapSocketClientToNavigation(AddNote) },
+  UserIsNotHome: { screen: mapSocketClientToNavigation(UserIsNotHome) }
+});
+
+const TabNav = TabNavigator({
   Delivery: {
-    screen: mapSocketClientToNavigation(Main),
+    screen: StackNav,
     navigationOptions: {
       tabBarIcon: (
         <Icon name="package-down" type="material-community" color="#fff" />
@@ -49,10 +55,8 @@ const App = TabNavigator({
   }
 });
 
-// const App = StackNavigator({
-//   Home: { screen: mapSocketClientToNavigation(Main) },
-//   AddNote: { screen: mapSocketClientToNavigation(AddNote) },
-//   UserIsNotHome: { screen: mapSocketClientToNavigation(UserIsNotHome) }
-// });
-
-export default () => <App />;
+export default () => (
+  <TabNav>
+    <StackNav />
+  </TabNav>
+);
