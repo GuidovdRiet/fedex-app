@@ -91,7 +91,7 @@ const ConfirmDateWrapper = styled.View`
 `;
 
 const ConfirmDateContainer = styled.TouchableHighlight`
-  background-color: #4d1c8a;
+  background-color: #F66739;
   justify-content: center;
   align-items: center;
   flex-direction: column;

@@ -60,19 +60,19 @@ const AddNoteInput = styled.TextInput`
   background: #fff;
   flex: 1;
   width: 300px;
-  margin-top: 15;
-  margin-bottom: 15;
+  margin-top: 60;
+  margin-bottom: 60;
 `;
 
 const SendNoteContainer = styled.TouchableHighlight`
-  background-color: #4d1c8a;
+  background-color: #F66739;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 200px;
   height: 80px;
-  margin-bottom: 15;
+  margin-bottom: 60;
 `;
 
 const SendNoteButton = styled.Text`

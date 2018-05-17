@@ -34,29 +34,36 @@ const StackNav = StackNavigator({
   UserIsNotHome: { screen: mapSocketClientToNavigation(UserIsNotHome) }
 });
 
-const TabNav = TabNavigator({
-  Delivery: {
-    screen: StackNav,
-    navigationOptions: {
-      tabBarIcon: (
-        <Icon name="package-down" type="material-community" color="#fff" />
-      ),
-      tabBarLabel: "Delivery"
+const TabNav = TabNavigator(
+  {
+    Delivery: {
+      screen: StackNav,
+      navigationOptions: {
+        tabBarIcon: (
+          <Icon name="package-down" type="material-community" color="#fff" />
+        ),
+        tabBarLabel: "Delivery"
+      }
+    },
+    Account: {
+      screen: mapSocketClientToNavigation(Account),
+      navigationOptions: {
+        tabBarIcon: (
+          <Icon name="account" type="material-community" color="#fff" />
+        ),
+        tabBarLabel: "Account"
+      }
     }
   },
-  Account: {
-    screen: mapSocketClientToNavigation(Account),
-    navigationOptions: {
-      tabBarIcon: (
-        <Icon name="account" type="material-community" color="#fff" />
-      ),
-      tabBarLabel: "Account"
-    }
+  {
+    tabBarOptions: {
+      style: {
+        backgroundColor: "#4D1C8A"
+      }
+    },
+    order: ["Delivery", "Account"],
+    animationEnabled: true
   }
-});
-
-export default () => (
-  <TabNav>
-    <StackNav />
-  </TabNav>
 );
+
+export default () => <TabNav />;
