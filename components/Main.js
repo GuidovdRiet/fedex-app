@@ -8,6 +8,7 @@ import AddNote from "./UserIsHome";
 import UserIsNotHome from "./UserIsNotHome";
 
 class Main extends Component {
+
   static navigationOptions = {
     title: "Home"
   };

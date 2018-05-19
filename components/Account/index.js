@@ -5,6 +5,8 @@ import styled from 'styled-components';
 
 import AccountPage from './account'
 
+import Account from './account';
+
 class UserProfile extends Component {
 
     constructor() {
@@ -12,7 +14,8 @@ class UserProfile extends Component {
         this.state = {
             isLoggedIn: false,
             username: "",
-            passoword: ""
+            passoword: "",
+            errorMessage: ""
         };
     }
 
@@ -28,14 +31,14 @@ class UserProfile extends Component {
                 password: password
             })
         }).then((res) => {
-            return res.JSON;
-        }).catch(function (error) {
-            console.log('There has been a problem with your fetch operation: ' + error.message);
-            // ADD THIS THROW error
-            throw error;
+            console.log(res.status);
+            if (res.status == 200) {
+                this.setState({ isLoggedIn: true })
+                console.log(this.state.isLoggedIn);
+            } else {
+                this.setState({ errorMessage: "Username or password invalid" });
+            }
         });
-
-        console.log(username, password);
     }
 
     _checkLogin() {
@@ -45,8 +48,10 @@ class UserProfile extends Component {
                     <LogoWrapper>
                         <Logo source={require("../../images/FedEx-brand.png")} />
                     </LogoWrapper>
+                    {this.state.errorMessage && <ErrorBox>{this.state.errorMessage}</ErrorBox>}
                     <UsernameField placeholder='Username'
                         placeholderTextColor='#9a9898'
+                        autoCapitalize="none"
                         onChangeText={username => this.setState({ username })}
                         value={this.state.username} />
                     <PasswordField placeholder='Password'
@@ -62,7 +67,9 @@ class UserProfile extends Component {
             )
         } else {
             return (
-                <AccountPage />
+                <UserProfileContainer>
+                    <Account />
+                </UserProfileContainer>
             )
         }
     }
@@ -121,6 +128,15 @@ const LogoWrapper = styled.View`
 `;
 
 const Logo = styled.Image``;
+
+const ErrorBox = styled.Text`
+    backgroundColor: rgba(255, 134, 125, 0.9);
+    color:#f7f7f7;
+    padding:10px;
+    font-size:12px;
+    border-radius:1px;
+`;
+
 
 
 export default UserProfile;
