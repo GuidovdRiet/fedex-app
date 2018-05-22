@@ -36,12 +36,22 @@ class AddNote extends Component {
             value={this.state.text}
           />
 
-          <SendNoteContainer
-            onPress={() => this.sendNote(this.state.text)}
-            underlayColor="#7FC285"
-          >
-            <SendNoteButton>Submit</SendNoteButton>
-          </SendNoteContainer>
+          <ButtonContainer>
+            <SendNoteContainer
+              onPress={() => this.sendNote(this.state.text)}
+              underlayColor="#7FC285"
+            >
+              <SendNoteButton>Submit</SendNoteButton>
+            </SendNoteContainer>
+
+            <SkipNoteContainer
+              onPress={() => this.skipNote()}
+              underlayColor="#6A7097"
+            >
+              <SkipNoteButton>Skip</SkipNoteButton>
+            </SkipNoteContainer>
+          </ButtonContainer>
+
         </AddNoteContainer>
       </TouchableWithoutFeedback>
     );
@@ -64,14 +74,17 @@ const AddNoteInput = styled.TextInput`
   margin-bottom: 60;
 `;
 
+const ButtonContainer = styled.View`
+  flex-direction: row;
+`;
+
 const SendNoteContainer = styled.TouchableHighlight`
   background-color: #F66739;
-  display: flex;
   justify-content: center;
+  width: 120;
+  height: 50;
+  flex-direction: row;
   align-items: center;
-  flex-direction: column;
-  width: 200px;
-  height: 80px;
   margin-bottom: 60;
 `;
 
@@ -79,3 +92,10 @@ const SendNoteButton = styled.Text`
   color: #fff;
   font-size: 18;
 `;
+
+const SkipNoteContainer = styled(SendNoteContainer)`
+  background-color: #677091;
+  margin-left: 10px;
+`;
+
+const SkipNoteButton = styled(SendNoteButton)``;
