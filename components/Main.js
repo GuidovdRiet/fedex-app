@@ -8,7 +8,6 @@ import AddNote from "./UserIsHome";
 import UserIsNotHome from "./UserIsNotHome";
 
 class Main extends Component {
-
   static navigationOptions = {
     title: "Home"
   };
@@ -94,7 +93,7 @@ const UserIsHomeContentContainer = styled.View`
   align-items: center;
 `;
 
-const UserIsNotHomeContentContainer = styled(UserIsHomeContentContainer) ``;
+const UserIsNotHomeContentContainer = styled(UserIsHomeContentContainer)``;
 
 const UserIsHomeButton = styled.Text`
   color: #fff;
@@ -102,14 +101,14 @@ const UserIsHomeButton = styled.Text`
   margin-left: 15;
 `;
 
-const UserIsNotHomeButton = styled(UserIsHomeButton) ``;
+const UserIsNotHomeButton = styled(UserIsHomeButton)``;
 
 const UserIsHomeIcon = styled.Image`
   width: 25;
   height: 25;
 `;
 
-const UserIsNotHomeContainer = styled(UserIsHomeContainer) `
+const UserIsNotHomeContainer = styled(UserIsHomeContainer)`
   background-color: #f8662e;
   margin-top: 20;
 `;

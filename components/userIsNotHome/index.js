@@ -43,7 +43,9 @@ class UserIsNotHome extends Component {
         </CalendarWrapper>
         {this.state.deliveryDateSet && (
           <ConfirmDateWrapper>
-            <ConfirmDateIcon source={require("../../images/icon/calendar.png")} />
+            <ConfirmDateIcon
+              source={require("../../images/icon/calendar.png")}
+            />
             <ConfirmDateText>
               Your package will be devilered{" "}
               {moment(this.state.deliveryDate.dateString).format("MMM Do YYYY")}
@@ -91,7 +93,7 @@ const ConfirmDateWrapper = styled.View`
 `;
 
 const ConfirmDateContainer = styled.TouchableHighlight`
-  background-color: #F66739;
+  background: #f66739;
   justify-content: center;
   align-items: center;
   flex-direction: column;

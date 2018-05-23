@@ -19,6 +19,10 @@ class AddNote extends Component {
     console.log(note);
   }
 
+  skipNote() {
+    console.log('Skip this step');
+  }
+
   render() {
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -35,7 +39,6 @@ class AddNote extends Component {
             onPress={console.log("test")}
             value={this.state.text}
           />
-
           <ButtonContainer>
             <SendNoteContainer
               onPress={() => this.sendNote(this.state.text)}
@@ -43,7 +46,6 @@ class AddNote extends Component {
             >
               <SendNoteButton>Submit</SendNoteButton>
             </SendNoteContainer>
-
             <SkipNoteContainer
               onPress={() => this.skipNote()}
               underlayColor="#6A7097"
@@ -51,7 +53,6 @@ class AddNote extends Component {
               <SkipNoteButton>Skip</SkipNoteButton>
             </SkipNoteContainer>
           </ButtonContainer>
-
         </AddNoteContainer>
       </TouchableWithoutFeedback>
     );
@@ -94,7 +95,7 @@ const SendNoteButton = styled.Text`
 `;
 
 const SkipNoteContainer = styled(SendNoteContainer)`
-  background-color: #677091;
+  background-color: #CECECE;
   margin-left: 10px;
 `;
 
