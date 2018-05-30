@@ -27,7 +27,6 @@ class Main extends Component {
         deliveryId: "5ae1bc56073bf525962418a6"
       });
       navigate("UserIsNotHome", { name: "Note home" });
-      console.log("Not Home");
     }
   }
 

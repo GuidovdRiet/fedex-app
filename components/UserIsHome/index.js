@@ -19,6 +19,10 @@ class AddNote extends Component {
     console.log(note);
   }
 
+  skipNote() {
+    console.log('Skip this step');
+  }
+
   render() {
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -35,13 +39,20 @@ class AddNote extends Component {
             onPress={console.log("test")}
             value={this.state.text}
           />
-
-          <SendNoteContainer
-            onPress={() => this.sendNote(this.state.text)}
-            underlayColor="#7FC285"
-          >
-            <SendNoteButton>Submit</SendNoteButton>
-          </SendNoteContainer>
+          <ButtonContainer>
+            <SendNoteContainer
+              onPress={() => this.sendNote(this.state.text)}
+              underlayColor="#7FC285"
+            >
+              <SendNoteButton>Submit</SendNoteButton>
+            </SendNoteContainer>
+            <SkipNoteContainer
+              onPress={() => this.skipNote()}
+              underlayColor="#6A7097"
+            >
+              <SkipNoteButton>Skip</SkipNoteButton>
+            </SkipNoteContainer>
+          </ButtonContainer>
         </AddNoteContainer>
       </TouchableWithoutFeedback>
     );
@@ -60,22 +71,32 @@ const AddNoteInput = styled.TextInput`
   background: #fff;
   flex: 1;
   width: 300px;
-  margin-top: 15;
-  margin-bottom: 15;
+  margin-top: 60;
+  margin-bottom: 60;
+`;
+
+const ButtonContainer = styled.View`
+  flex-direction: row;
 `;
 
 const SendNoteContainer = styled.TouchableHighlight`
-  background-color: #4d1c8a;
-  display: flex;
+  background-color: #F66739;
   justify-content: center;
+  width: 120;
+  height: 50;
+  flex-direction: row;
   align-items: center;
-  flex-direction: column;
-  width: 200px;
-  height: 80px;
-  margin-bottom: 15;
+  margin-bottom: 60;
 `;
 
 const SendNoteButton = styled.Text`
   color: #fff;
   font-size: 18;
 `;
+
+const SkipNoteContainer = styled(SendNoteContainer)`
+  background-color: #CECECE;
+  margin-left: 10px;
+`;
+
+const SkipNoteButton = styled(SendNoteButton)``;
