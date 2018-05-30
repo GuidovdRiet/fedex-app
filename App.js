@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import { StyleSheet, Text, View, Button, Image } from 'react-native';
-import { StackNavigator } from 'react-navigation';
-import io from 'socket.io-client';
+import React, { Component } from "react";
+import styled from "styled-components";
+import { StyleSheet, Text, View, Button, Image } from "react-native";
+import { StackNavigator } from "react-navigation";
+import io from "socket.io-client";
 
-import Main from './components/Main';
-import AddNote from './components/UserIsHome';
-import UserIsNotHome from './components/UserIsNotHome';
+import Main from "./components/Main";
+import AddNote from "./components/UserIsHome";
+import UserIsNotHome from "./components/UserIsNotHome";
 
 // const socketClient = io('http://45.77.159.108:7000');
-const socketClient = io('http://localhost:7000');
+const socketClient = io("http://localhost:7000");
 
 const mapSocketClientToNavigation = Component => {
     return class extends Component {
