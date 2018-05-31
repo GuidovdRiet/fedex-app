@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import { Text, TextInput, TouchableOpacity } from "react-native";
 
 import styled from "styled-components";
-
 import AccountPage from "./account";
-
 import Account from "./account";
 
 class UserProfile extends Component {

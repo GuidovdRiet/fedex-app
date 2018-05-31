@@ -10,6 +10,7 @@ import Main from "./components/Main";
 import AddNote from "./components/UserIsHome";
 import UserIsNotHome from "./components/UserIsNotHome";
 import Account from "./components/Account";
+import Map from "./components/UserIsHome/Map";
 
 // const socketClient = io('http://45.77.159.108:7000');
 const socketClient = io("http://localhost:7000");
@@ -31,7 +32,8 @@ const mapSocketClientToNavigation = Component => {
 const StackNav = StackNavigator({
   Home: { screen: mapSocketClientToNavigation(Main) },
   AddNote: { screen: mapSocketClientToNavigation(AddNote) },
-  UserIsNotHome: { screen: mapSocketClientToNavigation(UserIsNotHome) }
+  UserIsNotHome: { screen: mapSocketClientToNavigation(UserIsNotHome) },
+  Map: { screen: mapSocketClientToNavigation(map) }
 });
 
 const TabNav = TabNavigator(
