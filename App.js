@@ -16,17 +16,21 @@ import Map from "./components/UserIsHome/Map";
 const socketClient = io("http://localhost:7000");
 
 const mapSocketClientToNavigation = Component => {
-  return class extends Component {
-    render() {
-      const { navigation, ...other } = this.props;
-      const {
-        state: { params }
-      } = navigation;
-      return (
-        <Component {...this.props} {...params} socketClient={socketClient} />
-      );
-    }
-  };
+    return class extends Component {
+        render() {
+            const { navigation, ...other } = this.props;
+            const {
+                state: { params }
+            } = navigation;
+            return (
+                <Component
+                    {...this.props}
+                    {...params}
+                    socketClient={socketClient}
+                />
+            );
+        }
+    };
 };
 
 const StackNav = StackNavigator({
@@ -37,35 +41,43 @@ const StackNav = StackNavigator({
 });
 
 const TabNav = TabNavigator(
-  {
-    Delivery: {
-      screen: StackNav,
-      navigationOptions: {
-        tabBarIcon: (
-          <Icon name="package-down" type="material-community" color="#fff" />
-        ),
-        tabBarLabel: "Delivery"
-      }
+    {
+        Delivery: {
+            screen: StackNav,
+            navigationOptions: {
+                tabBarIcon: (
+                    <Icon
+                        name="package-down"
+                        type="material-community"
+                        color="#fff"
+                    />
+                ),
+                tabBarLabel: "Delivery"
+            }
+        },
+        Account: {
+            screen: mapSocketClientToNavigation(Account),
+            navigationOptions: {
+                tabBarIcon: (
+                    <Icon
+                        name="account"
+                        type="material-community"
+                        color="#fff"
+                    />
+                ),
+                tabBarLabel: "Account"
+            }
+        }
     },
-    Account: {
-      screen: mapSocketClientToNavigation(Account),
-      navigationOptions: {
-        tabBarIcon: (
-          <Icon name="account" type="material-community" color="#fff" />
-        ),
-        tabBarLabel: "Account"
-      }
+    {
+        tabBarOptions: {
+            style: {
+                backgroundColor: "#4D1C8A"
+            }
+        },
+        order: ["Delivery", "Account"],
+        animationEnabled: true
     }
-  },
-  {
-    tabBarOptions: {
-      style: {
-        backgroundColor: "#4D1C8A"
-      }
-    },
-    order: ["Delivery", "Account"],
-    animationEnabled: true
-  }
 );
 
 export default () => <TabNav />;
