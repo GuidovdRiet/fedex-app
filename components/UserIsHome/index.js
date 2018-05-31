@@ -20,7 +20,8 @@ class AddNote extends Component {
   }
 
   skipNote() {
-    console.log('Skip this step');
+    const { navigate } = this.props.navigation;
+    navigate("DeliveryMap", { name: "DeliveryMap" });
   }
 
   render() {
@@ -80,7 +81,7 @@ const ButtonContainer = styled.View`
 `;
 
 const SendNoteContainer = styled.TouchableHighlight`
-  background-color: #F66739;
+  background-color: #f66739;
   justify-content: center;
   width: 120;
   height: 50;
@@ -95,7 +96,7 @@ const SendNoteButton = styled.Text`
 `;
 
 const SkipNoteContainer = styled(SendNoteContainer)`
-  background-color: #CECECE;
+  background-color: #cecece;
   margin-left: 10px;
 `;
 

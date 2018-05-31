@@ -10,7 +10,7 @@ import Main from "./components/Main";
 import AddNote from "./components/UserIsHome";
 import UserIsNotHome from "./components/UserIsNotHome";
 import Account from "./components/Account";
-import Map from "./components/UserIsHome/Map";
+import DeliveryMap from "./components/UserIsHome/DeliveryMap";
 
 // const socketClient = io('http://45.77.159.108:7000');
 const socketClient = io("http://localhost:7000");
@@ -34,10 +34,10 @@ const mapSocketClientToNavigation = Component => {
 };
 
 const StackNav = StackNavigator({
-  Home: { screen: mapSocketClientToNavigation(Main) },
-  AddNote: { screen: mapSocketClientToNavigation(AddNote) },
-  UserIsNotHome: { screen: mapSocketClientToNavigation(UserIsNotHome) },
-  Map: { screen: mapSocketClientToNavigation(map) }
+    Home: { screen: mapSocketClientToNavigation(Main) },
+    AddNote: { screen: mapSocketClientToNavigation(AddNote) },
+    UserIsNotHome: { screen: mapSocketClientToNavigation(UserIsNotHome) },
+    DeliveryMap: { screen: mapSocketClientToNavigation(DeliveryMap) }
 });
 
 const TabNav = TabNavigator(

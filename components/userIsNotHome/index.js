@@ -17,92 +17,43 @@ export default class UserIsNotHome extends Component {
         };
     }
 
-  render() {
-    const today = new Date();
-    return (
-      <UserIsNotHomeContainer>
-        <CalendarWrapper>
-          <Calendar
-            minDate={today}
-            onDayPress={day => {
-              this.setState({ deliveryDate: day, deliveryDateSet: true });
-              console.log(this.state.deliveryDate);
-            }}
-            markedDates={{
-              [this.state.deliveryDate.dateString]: {
-                selected: true,
-                marked: true,
-                selectedColor: "#F8662E"
-              }
-            }}
-          />
-        </CalendarWrapper>
-        {this.state.deliveryDateSet && (
-          <ConfirmDateWrapper>
-            <ConfirmDateIcon
-              source={require("../../images/icon/calendar.png")}
-            />
-            <ConfirmDateText>
-              Your package will be devilered{" "}
-              {moment(this.state.deliveryDate.dateString).format("MMM Do YYYY")}
-            </ConfirmDateText>
-            <ConfirmDateContainer
-              onPress={() => this.confirmDate(this.state.deliveryDate)}
-              underlayColor="#7FC285"
-            >
-              <ConfirmDateButton>Confirm</ConfirmDateButton>
-            </ConfirmDateContainer>
-          </ConfirmDateWrapper>
-        )}
-      </UserIsNotHomeContainer>
-    );
-  }
-}
-
     render() {
         const today = new Date();
         return (
             <UserIsNotHomeContainer>
-                <CalendarWrapper>
-                    <Calendar
-                        minDate={today}
-                        onDayPress={day => {
-                            this.setState({
-                                deliveryDate: day,
-                                deliveryDateSet: true
-                            });
-                            console.log(this.state.deliveryDate);
-                        }}
-                        markedDates={{
-                            [this.state.deliveryDate.dateString]: {
-                                selected: true,
-                                marked: true,
-                                selectedColor: "#F8662E"
-                            }
-                        }}
-                    />
-                </CalendarWrapper>
-                {this.state.deliveryDateSet && (
-                    <ConfirmDateWrapper>
-                        <ConfirmDateIcon
-                            source={require("../../images/icon/calendar.png")}
-                        />
-                        <ConfirmDateText>
-                            Your package will be devilered{" "}
-                            {moment(this.state.deliveryDate.dateString).format(
-                                "MMM Do YYYY"
-                            )}
-                        </ConfirmDateText>
-                        <ConfirmDateContainer
-                            onPress={() =>
-                                this.confirmDate(this.state.deliveryDate)
-                            }
-                            underlayColor="#7FC285"
-                        >
-                            <ConfirmDateButton>Confirm</ConfirmDateButton>
-                        </ConfirmDateContainer>
-                    </ConfirmDateWrapper>
-                )}
+            <CalendarWrapper>
+                <Calendar
+                minDate={today}
+                onDayPress={day => {
+                    this.setState({ deliveryDate: day, deliveryDateSet: true });
+                    console.log(this.state.deliveryDate);
+                }}
+                markedDates={{
+                    [this.state.deliveryDate.dateString]: {
+                    selected: true,
+                    marked: true,
+                    selectedColor: "#F8662E"
+                    }
+                }}
+            />
+            </CalendarWrapper>
+            {this.state.deliveryDateSet && (
+                <ConfirmDateWrapper>
+                <ConfirmDateIcon
+                    source={require("../../images/icon/calendar.png")}
+                />
+                <ConfirmDateText>
+                    Your package will be devilered{" "}
+                    {moment(this.state.deliveryDate.dateString).format("MMM Do YYYY")}
+                </ConfirmDateText>
+                <ConfirmDateContainer
+                    onPress={() => this.confirmDate(this.state.deliveryDate)}
+                    underlayColor="#7FC285"
+                >
+                    <ConfirmDateButton>Confirm</ConfirmDateButton>
+                </ConfirmDateContainer>
+                </ConfirmDateWrapper>
+            )}
             </UserIsNotHomeContainer>
         );
     }
