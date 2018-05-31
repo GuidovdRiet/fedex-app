@@ -11,9 +11,7 @@ import AddNote from "./components/UserIsHome";
 import UserIsNotHome from "./components/UserIsNotHome";
 import Login from "./components/Login";
 import Profile from "./components/Profile";
-
-import map from "./components/UserIsHome";
-
+import DeliveryMap from "./components/UserIsHome/DeliveryMap";
 const LoginContext = React.createContext("Login");
 
 class LoginContextProvider extends Component {
@@ -45,6 +43,7 @@ class LoginContextProvider extends Component {
   }
 }
 
+
 // const socketClient = io('http://45.77.159.108:7000');
 const socketClient = io("http://localhost:7000");
 
@@ -75,6 +74,21 @@ const mapSocketClientToNavigation = Component => {
       );
     }
   };
+  return class extends Component {
+    render() {
+      const { navigation, ...other } = this.props;
+      const {
+                state: { params }
+            } = navigation;
+      return (
+        <Component
+          {...this.props}
+          {...params}
+          socketClient={socketClient}
+        />
+      );
+    }
+  };
 };
 
 
@@ -82,7 +96,7 @@ const DeliveryStackNavigator = StackNavigator({
   Home: { screen: mapSocketClientToNavigation(Main) },
   AddNote: { screen: mapSocketClientToNavigation(AddNote) },
   UserIsNotHome: { screen: mapSocketClientToNavigation(UserIsNotHome) },
-  Map: { screen: mapSocketClientToNavigation(map) }
+  Map: { screen: mapSocketClientToNavigation(DeliveryMap) }
 });
 
 // const LoginStackNavigator = StackNavigator({
@@ -95,18 +109,26 @@ const TabNav = TabNavigator(
       screen: DeliveryStackNavigator,
       navigationOptions: {
         tabBarIcon: (
-          <Icon name="package-down" type="material-community" color="#fff" />
+          <Icon
+            name="package-down"
+            type="material-community"
+            color="#fff"
+          />
         ),
         tabBarLabel: "Delivery"
       }
     },
-    Login: {
+    Account: {
       screen: mapSocketClientToNavigation(Login),
       navigationOptions: {
         tabBarIcon: (
-          <Icon name="account" type="material-community" color="#fff" />
+          <Icon
+            name="account"
+            type="material-community"
+            color="#fff"
+          />
         ),
-        tabBarLabel: "Login"
+        tabBarLabel: "Account"
       }
     }
   },
@@ -116,7 +138,7 @@ const TabNav = TabNavigator(
         backgroundColor: "#4D1C8A"
       }
     },
-    order: ["Delivery", "Login"],
+    order: ["Delivery", "Account"],
     animationEnabled: true
   }
 );
