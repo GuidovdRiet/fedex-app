@@ -12,6 +12,8 @@ import UserIsNotHome from "./components/UserIsNotHome";
 import Login from "./components/Login";
 import Profile from "./components/Profile";
 
+import map from "./components/UserIsHome";
+
 const LoginContext = React.createContext("Login");
 
 class LoginContextProvider extends Component {
@@ -79,7 +81,8 @@ const mapSocketClientToNavigation = Component => {
 const DeliveryStackNavigator = StackNavigator({
   Home: { screen: mapSocketClientToNavigation(Main) },
   AddNote: { screen: mapSocketClientToNavigation(AddNote) },
-  UserIsNotHome: { screen: mapSocketClientToNavigation(UserIsNotHome) }
+  UserIsNotHome: { screen: mapSocketClientToNavigation(UserIsNotHome) },
+  Map: { screen: mapSocketClientToNavigation(map) }
 });
 
 // const LoginStackNavigator = StackNavigator({

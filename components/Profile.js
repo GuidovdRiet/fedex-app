@@ -49,13 +49,9 @@ export default class Profile extends Component {
                     <ProfileImageWrapper>
                         <ProfileImage source={{ uri: 'https://www.bighandi.com/img/profile-demo.png' }} />
                     </ProfileImageWrapper>
-                    {/* <ConsumerInfo>{this.state.name}</ConsumerInfo>
+                    <ConsumerInfo>{this.state.name}</ConsumerInfo>
                     <ConsumerInfo>{this.state.email}</ConsumerInfo>
-                    <ConsumerInfo>{this.state.phone}</ConsumerInfo> */}
-
-                    <ConsumerInfo>Marvin Holleman</ConsumerInfo>
-                    <ConsumerInfo>Marvin.holleman@hotmail.nl</ConsumerInfo>
-                    <ConsumerInfo>06-27007292</ConsumerInfo>
+                    <ConsumerInfo>{this.state.phone}</ConsumerInfo>
                 </ConsumerData>
             </AccountScreenContainer>
         )

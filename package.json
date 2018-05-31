@@ -24,6 +24,7 @@
     "react-native-calendars": "^1.19.3",
     "react-native-elements": "^0.19.0",
     "react-native-notifications": "^1.1.19",
+    "react-native-vector-icons": "^4.6.0",
     "react-navigation": "^1.5.9",
     "socket.io-client": "^2.1.0",
     "styled-components": "^3.2.6"
