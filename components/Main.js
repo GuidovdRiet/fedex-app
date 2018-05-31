@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { NavigationActions } from "react-navigation";
 import { StyleSheet, Text, View, Button, Image } from "react-native";
 
 // Components
 import AddNote from "./UserIsHome";
 import UserIsNotHome from "./UserIsNotHome";
+// import Login from './Login'
 
 class Main extends Component {
 
@@ -13,15 +15,29 @@ class Main extends Component {
     title: "Home"
   };
 
+  componentDidMount() {
+    console.log(this.props)
+    if (!this.props.isLoggedIn) {
+      // const newStack = NavigationActions.reset({
+      //   index: 0,
+      //   actions: [
+      //     NavigationActions.navigate({ routeName: 'Login' })
+      //   ]
+      // });
+      // this.props.navigation.dispatch(newStack);
+      // this.props.navigation.navigate('Login');
+    }
+  }
+
   _isUserHome(isHome) {
     const { navigate } = this.props.navigation;
     if (isHome) {
+      // OPEN DELIVERIES OPHALEN CONSUMER ID WAARMEE IS INGELOGD
       this.props.socketClient.emit("delivery:change-home-notification", {
         atHome: true,
         deliveryId: "5ae1bc56073bf525962418a6"
       });
       navigate("AddNote", { name: "Note" });
-      console.log("Home");
     } else {
       this.props.socketClient.emit("delivery:change-home-notification", {
         atHome: false,

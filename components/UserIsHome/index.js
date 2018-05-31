@@ -10,9 +10,11 @@ class AddNote extends Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       text: null
     };
+    console.log(this.props);
   }
 
   sendNote(note) {

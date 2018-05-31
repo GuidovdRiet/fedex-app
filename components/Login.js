@@ -3,23 +3,27 @@ import { Text, TextInput, TouchableOpacity, } from 'react-native';
 
 import styled from 'styled-components';
 
-import AccountPage from './account'
+import Profile from './Profile';
 
-import Account from './account';
-
-class UserProfile extends Component {
-
+export default class Login extends Component {
     constructor() {
         super();
         this.state = {
             isLoggedIn: false,
+            userId: null,
             username: "",
-            passoword: "",
-            errorMessage: ""
+            email: "",
+            name: "",
+            password: "",
+            errorMessage: "",
         };
     }
+    static navigationOptions = {
+        title: "UserProfile"
+    };
 
     _login(username, password) {
+        console.log(this.props);
         fetch("http://localhost:7777/login", {
             method: "POST",
             headers: {
@@ -27,18 +31,26 @@ class UserProfile extends Component {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                username: username,
-                password: password
+                username,
+                password
             })
-        }).then((res) => {
-            console.log(res.status);
+        }).then(res => {
             if (res.status == 200) {
-                this.setState({ isLoggedIn: true })
-                console.log(this.state.isLoggedIn);
+                res.json().then(result => {
+                    this.setState({
+                        isLoggedIn: true,
+                        userId: result._id
+                    }, () => {
+                        this.props.updateLogin(true);
+                        this.props.setUserId(this.state.userId);
+                    })
+                });
+
             } else {
                 this.setState({ errorMessage: "Username or password invalid" });
             }
         });
+
     }
 
     _checkLogin() {
@@ -46,7 +58,7 @@ class UserProfile extends Component {
             return (
                 <UserProfileContainer>
                     <LogoWrapper>
-                        <Logo source={require("../../images/FedEx-brand.png")} />
+                        <Logo source={require("../images/FedEx-brand.png")} />
                     </LogoWrapper>
                     {this.state.errorMessage && <ErrorBox>{this.state.errorMessage}</ErrorBox>}
                     <UsernameField placeholder='Username'
@@ -68,7 +80,7 @@ class UserProfile extends Component {
         } else {
             return (
                 <UserProfileContainer>
-                    <Account />
+                    <Profile userId={this.state.userId} />
                 </UserProfileContainer>
             )
         }
@@ -139,4 +151,3 @@ const ErrorBox = styled.Text`
 
 
 
-export default UserProfile;
