@@ -3,6 +3,8 @@ import { NavigationActions } from "react-navigation";
 import { Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import PropTypes from "prop-types";
 
+import PackageImage from '../images/icon/package.png'
+
 import styled from 'styled-components';
 
 export default class Profile extends Component {
@@ -53,6 +55,29 @@ export default class Profile extends Component {
                     <ConsumerInfo>{this.state.email}</ConsumerInfo>
                     <ConsumerInfo>{this.state.phone}</ConsumerInfo>
                 </ConsumerData>
+                <PackagesWrapper>
+                    <PackageIcon source={PackageImage} />
+                    <PackageInfo>
+                        <PackageSender>Bol.com</PackageSender>
+                        <PackageNumber>0924834</PackageNumber>
+                    </PackageInfo>
+                    <ShowPackage>></ShowPackage>
+                </PackagesWrapper>
+                <PackagesWrapper>
+                    <PackageIcon source={PackageImage} />
+                    <PackageInfo>
+                        <PackageSender>Bol.com</PackageSender>
+                        <PackageNumber>0924834</PackageNumber>
+                    </PackageInfo>
+                    <ShowPackage>></ShowPackage>
+                </PackagesWrapper> <PackagesWrapper>
+                    <PackageIcon source={PackageImage} />
+                    <PackageInfo>
+                        <PackageSender>Bol.com</PackageSender>
+                        <PackageNumber>0924834</PackageNumber>
+                    </PackageInfo>
+                    <ShowPackage>></ShowPackage>
+                </PackagesWrapper>
             </AccountScreenContainer>
         )
     }
@@ -65,7 +90,8 @@ const AccountScreenContainer = styled.View`
 `;
 
 const ConsumerData = styled.View`
-  margin-bottom: 50;
+margin-top:50;
+  margin-bottom: 40;
   justify-content: center;
   align-items: center;
 `;
@@ -80,5 +106,46 @@ const ProfileImage = styled.Image`
 `;
 const ConsumerInfo = styled.Text`
     fontSize:20px;
-    padding-bottom:10px;
+    
+    color:#555555;
+`;
+
+const PackagesWrapper = styled.View`
+    padding-top:10px;
+    padding-bottom:10px
+    padding-left:30px;
+    justify-content: flex-start;
+    align-items: flex-start	;
+    flex-direction:row;
+    width:100%;
+    border-style: solid;
+    border-color: #555555;
+    border-top-width: 1;
+`;
+
+const PackageInfo = styled.View`
+
+`;
+
+const PackageIcon = styled.Image`
+    width:40px;
+    height:40px;
+`;
+
+const PackageNumber = styled.Text`
+    padding-left:25px;
+    color:#555555;
+`;
+
+const PackageSender = styled.Text`
+    font-size:22px;
+    padding-left:20px;
+    color:#555555;
+`;
+
+const ShowPackage = styled.Text`
+    font-size:30px;
+    padding-right:30px
+    margin-left: auto;
+    color:#555555;
 `;

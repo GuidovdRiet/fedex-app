@@ -99,9 +99,10 @@ const DeliveryStackNavigator = StackNavigator({
   Map: { screen: mapSocketClientToNavigation(DeliveryMap) }
 });
 
-// const LoginStackNavigator = StackNavigator({
-
-// });
+const LoginStackNavigator = StackNavigator({
+  Login: { screen: mapSocketClientToNavigation(Login) },
+  Profile: { screen: mapSocketClientToNavigation(Profile) },
+});
 
 const TabNav = TabNavigator(
   {
@@ -119,7 +120,7 @@ const TabNav = TabNavigator(
       }
     },
     Account: {
-      screen: mapSocketClientToNavigation(Login),
+      screen: LoginStackNavigator,
       navigationOptions: {
         tabBarIcon: (
           <Icon

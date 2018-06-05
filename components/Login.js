@@ -16,10 +16,11 @@ export default class Login extends Component {
       name: "",
       password: "",
       errorMessage: "",
+      page: "Login"
     };
   }
   static navigationOptions = {
-    title: "UserProfile"
+    title: "Profile"
   };
 
   _login(username, password) {
