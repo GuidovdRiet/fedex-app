@@ -118,7 +118,7 @@ const TabNav = TabNavigator(
             }
         },
         Account: {
-            screen: mapSocketClientToNavigation(Login),
+            screen: LoginStackNavigator,
             navigationOptions: {
                 tabBarIcon: (
                     <Icon
