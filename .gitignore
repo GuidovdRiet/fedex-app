@@ -1,7 +1,8 @@
 # OSX
 #
 .DS_Store
-
+ios/Pods
+ios/Pods/*
 # Xcode
 #
 build/
