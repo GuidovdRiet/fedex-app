@@ -97,9 +97,10 @@ const DeliveryStackNavigator = StackNavigator({
     DeliveryMap: { screen: mapSocketClientToNavigation(DeliveryMap) }
 });
 
-// const LoginStackNavigator = StackNavigator({
-
-// });
+const LoginStackNavigator = StackNavigator({
+    Login: { screen: mapSocketClientToNavigation(Login) },
+    Profile: { screen: mapSocketClientToNavigation(Profile) }
+});
 
 const TabNav = TabNavigator(
     {
