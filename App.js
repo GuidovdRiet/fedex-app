@@ -45,8 +45,7 @@ class LoginContextProvider extends Component {
     }
 }
 
-// const socketClient = io('http://45.77.159.108:7000');
-const socketClient = io("http://localhost:7000");
+const socketClient = io("http://45.63.12.46:8080");
 
 const mapSocketClientToNavigation = Component => {
     // TODO: state lives here?
@@ -137,7 +136,7 @@ const TabNav = TabNavigator(
                 backgroundColor: "#4D1C8A"
             }
         },
-        order: ["Delivery", "Account"],
+        order: ["Account", "Delivery"],
         animationEnabled: true
     }
 );

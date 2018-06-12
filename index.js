@@ -1,3 +1,6 @@
-import { AppRegistry } from 'react-native';
-import App from './App';
-AppRegistry.registerComponent('FedEx', () => App);
+import { AppRegistry } from "react-native";
+import App from "./App";
+
+console.disableYellowBox = true;
+
+AppRegistry.registerComponent("FedEx", () => App);

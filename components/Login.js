@@ -25,7 +25,6 @@ export default class Login extends Component {
     };
 
     _login(username, password) {
-        console.log(this.props);
         fetch("http://45.63.12.46:8080/login", {
             method: "POST",
             headers: {
