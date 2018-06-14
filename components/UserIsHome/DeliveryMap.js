@@ -35,18 +35,18 @@ class DeliveryMap extends Component {
     render() {
         return (
             <MapContainer>
+                <MapInfoContainer>
+                    <MapInfo>Delivery time: 12:34 uur</MapInfo>
+                </MapInfoContainer>
                 <MapView
                     style={styles.map}
                     initialRegion={{
-                        latitude: 37.78825,
-                        longitude: -122.4324,
+                        latitude: 51.9174254,
+                        longitude: 4.4826467,
                         latitudeDelta: 0.0922,
                         longitudeDelta: 0.0421
                     }}
                 />
-                <MapInfoContainer>
-                    <MapInfo>Delivery time: 12:34 uur</MapInfo>
-                </MapInfoContainer>
             </MapContainer>
         );
     }
@@ -54,7 +54,7 @@ class DeliveryMap extends Component {
 
 const styles = StyleSheet.create({
     map: {
-        flex: 5
+        flex: 8
     }
 });
 
@@ -64,7 +64,7 @@ const MapContainer = styled.View`
 `
 
 const MapInfoContainer = styled.View`
-    background: #FC5A1F;
+    background: #4D2288;
     flex: 1;
     justify-content: center;
     align-items: center;
