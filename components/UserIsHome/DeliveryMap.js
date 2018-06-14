@@ -34,7 +34,7 @@ class DeliveryMap extends Component {
     // pas weghalen en geolocation tonen als deliveryPos lat/lon bekend zijn
     render() {
         return (
-            <View width={500}>
+            <MapContainer>
                 <MapView
                     style={styles.map}
                     initialRegion={{
@@ -44,17 +44,35 @@ class DeliveryMap extends Component {
                         longitudeDelta: 0.0421
                     }}
                 />
-                <BottomContainer />
-            </View>
+                <MapInfoContainer>
+                    <MapInfo>Delivery time: 12:34 uur</MapInfo>
+                </MapInfoContainer>
+            </MapContainer>
         );
     }
 }
 
 const styles = StyleSheet.create({
     map: {
-        width: width,
-        height: 500
+        flex: 5
     }
 });
+
+const MapContainer = styled.View`
+    flex: 1;
+    background: red;
+`
+
+const MapInfoContainer = styled.View`
+    background: #FC5A1F;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+`
+
+const MapInfo = styled.Text`
+    color: white;
+    font-size: 20px;
+`;
 
 export default DeliveryMap;

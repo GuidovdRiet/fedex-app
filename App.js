@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import styled from "styled-components";
-import { StyleSheet, Text, View, Button, Image } from "react-native";
 
 import { TabNavigator, StackNavigator } from "react-navigation";
 import { Icon } from "react-native-elements";
@@ -13,6 +11,8 @@ import Login from "./components/Login";
 import Profile from "./components/Profile";
 import DeliveryMap from "./components/UserIsHome/DeliveryMap";
 const LoginContext = React.createContext("Login");
+
+console.disableYellowBox = true;
 
 class LoginContextProvider extends Component {
     //TODO: hier consumer id plaatsen
@@ -91,10 +91,10 @@ const mapSocketClientToNavigation = Component => {
 };
 
 const DeliveryStackNavigator = StackNavigator({
+    DeliveryMap: { screen: mapSocketClientToNavigation(DeliveryMap) },
     Home: { screen: mapSocketClientToNavigation(Main) },
     AddNote: { screen: mapSocketClientToNavigation(AddNote) },
     UserIsNotHome: { screen: mapSocketClientToNavigation(UserIsNotHome) },
-    DeliveryMap: { screen: mapSocketClientToNavigation(DeliveryMap) }
 });
 
 const LoginStackNavigator = StackNavigator({
@@ -142,59 +142,8 @@ const TabNav = TabNavigator(
     }
 );
 
-// TODO: 2 dingen aan elk child mee kunnen geven:
-// - 1 een navigator instance
-// - 2 state of je ingelogd bent of niet
 export default () => (
     <LoginContextProvider>
         <TabNav />
     </LoginContextProvider>
 );
-
-// const afterAuthRoutes = {
-//   Home: {
-//     screen: HomeScreenStack
-//   },
-//   History: {
-//     screen: AfterAuthScreens.HistoryScreen
-//   },
-//   ...
-// }
-
-// const TabConfig = {
-//   initialRouteName: 'Home',
-//   ...
-// }
-
-// const afterAuth = TabNavigator(afterAuthRoutes, TabConfig)
-
-// const beforeAuthRoutes = {
-//   Login: {
-//     screen: AuthScreens.LoginScreen,
-//     path: 'auth/login'
-//   },
-//   Signup: {
-//     screen: AuthScreens.SignUpScreen,
-//     path: 'auth/signup'
-//   },
-//   ...
-// }
-
-// const authConfig = {
-//   initialRouteName: 'Login',
-//   ...
-// }
-
-// const beforeAuth = StackNavigator(beforeAuthRoutes, authConfig)
-
-// const AppNav = StackNavigator({
-//   authStack: { screen: beforeAuth },
-//   mainStack: { screen: afterAuth }
-// }, {
-//     // Default config for all screens
-//     headerMode: 'none',
-//     title: 'Main',
-//     initialRouteName: 'authStack'
-//   })
-
-// And now to login the user, I just call navigate("mainStack") to logout the user, navigate("authStack"), ofc by logout and login I mean changing the screens, I am not talking about the entire process.
