@@ -3,6 +3,8 @@ import { Dimensions, StyleSheet, Image } from "react-native";
 import MapView from "react-native-maps";
 import MapViewDirections from "react-native-maps-directions";
 import styled from "styled-components";
+import popUp from './Popup';
+import Popup from "./Popup";
 
 const { width, height } = Dimensions.get("window");
 const ASPECT_RATIO = width / height;
@@ -21,26 +23,30 @@ class DeliveryMap extends Component {
   constructor(props) {
     super(props);
 
-    // AirBnB's Office, and Apple Park
     this.state = {
       coordinates: [
+        // Receiver
         {
           latitude: 51.9174254,
           longitude: 4.4826467
         },
+        // Deliverer
         {
           latitude: 51.937666,
-          longitude: 4.47869, 
+          longitude: 4.47869
         }
-      ]
+      ],
+      showPopup: false
     };
 
     this.mapView = null;
   }
 
-  onMapPress = e => {
+  show;
+
+  setCoordinates = e => {
     this.setState({
-      coordinates: [...this.state.coordinates, e.nativeEvent.coordinate]
+      coordinates: [this.state.coordinates[0], e.nativeEvent.coordinate]
     });
   };
 
@@ -56,7 +62,7 @@ class DeliveryMap extends Component {
           }}
           style={StyleSheet.absoluteFill}
           ref={c => (this.mapView = c)}
-          onPress={this.onMapPress}
+          onPress={this.setCoordinates}
         >
           {this.state.coordinates.map((coordinate, index) => (
             <MapView.Marker
@@ -67,14 +73,7 @@ class DeliveryMap extends Component {
           {this.state.coordinates.length >= 2 && (
             <MapViewDirections
               origin={this.state.coordinates[0]}
-              waypoints={
-                this.state.coordinates.length > 2
-                  ? this.state.coordinates.slice(1, -1)
-                  : null
-              }
-              destination={
-                this.state.coordinates[this.state.coordinates.length - 1]
-              }
+              destination={this.state.coordinates[1]}
               apikey={GOOGLE_MAPS_APIKEY}
               strokeWidth={3}
               strokeColor="#F3792F"
@@ -95,6 +94,7 @@ class DeliveryMap extends Component {
                   }
                 });
               }}
+              resetOnChange={true}
               onError={errorMessage => {
                 // console.log('GOT AN ERROR');
               }}
@@ -106,10 +106,13 @@ class DeliveryMap extends Component {
             source={require("../../images/deliverermap-avatar.png")}
           />
           <MapInfoTextContainer>
-            <MapInfo>Delivery time: 12:34</MapInfo>
+            <MapInfo>Delivery time: 16:59</MapInfo>
             <DelivererName>Michael Frattaroli</DelivererName>
           </MapInfoTextContainer>
         </MapInfoContainer>
+        <PopUpContainer>
+          {this.state.showPopup ? <Popup/> : ''}
+        </PopUpContainer>
       </MapContainer>
     );
   }
@@ -145,5 +148,12 @@ const DelivererAvatar = styled.Image`
 
 const MapInfo = styled.Text`
   color: white;
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: bold;
+`;
+
+const PopUpContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
 `;

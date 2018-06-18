@@ -16,6 +16,7 @@ class AddNote extends Component {
   }
 
   sendNote(note) {
+    console.log(note);
     const { navigate } = this.props.navigation;
     navigate("DeliveryMap", { name: "DeliveryMap" });
   }
