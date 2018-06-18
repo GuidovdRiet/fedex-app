@@ -36,17 +36,20 @@ class DeliveryMap extends Component {
           longitude: 4.47869
         }
       ],
-      showPopup: false
+      showPopup: false,
+      deliveryTime: 11
     };
 
     this.mapView = null;
   }
 
-  show;
-
   setCoordinates = e => {
+    const deliveryTimeInMin =
+      this.state.deliveryTime - Math.floor(Math.random() * 3);
     this.setState({
-      coordinates: [this.state.coordinates[0], e.nativeEvent.coordinate]
+      coordinates: [this.state.coordinates[0], e.nativeEvent.coordinate],
+      deliveryTime: deliveryTimeInMin <= 0 ? 0 : deliveryTimeInMin,
+      showPopup: this.state.deliveryTime <= 0 ? true : false
     });
   };
 
@@ -106,7 +109,9 @@ class DeliveryMap extends Component {
             source={require("../../images/deliverermap-avatar.png")}
           />
           <MapInfoTextContainer>
-            <MapInfo>Delivery time: 16:59</MapInfo>
+            <MapInfo>
+              I'll be there in {this.state.deliveryTime} minutes
+            </MapInfo>
             <DelivererName>Michael Frattaroli</DelivererName>
           </MapInfoTextContainer>
         </MapInfoContainer>

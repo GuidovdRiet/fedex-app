@@ -85,10 +85,10 @@ const mapSocketClientToNavigation = Component => {
 };
 
 const DeliveryStackNavigator = StackNavigator({
+  DeliveryMap: { screen: mapSocketClientToNavigation(DeliveryMap) },
   Home: { screen: mapSocketClientToNavigation(Main) },
   AddNote: { screen: mapSocketClientToNavigation(AddNote) },
-  UserIsNotHome: { screen: mapSocketClientToNavigation(UserIsNotHome) },
-  DeliveryMap: { screen: mapSocketClientToNavigation(DeliveryMap) }
+  UserIsNotHome: { screen: mapSocketClientToNavigation(UserIsNotHome) }
 });
 
 const LoginStackNavigator = StackNavigator({
