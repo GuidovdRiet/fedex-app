@@ -51,7 +51,6 @@ class AddNote extends Component {
             numberOfLines={10}
             placeholder={"Add your note.."}
             onChangeText={text => this.setState({ text })}
-            onPress={console.log("test")}
             value={this.state.text}
           />
           <ButtonContainer>

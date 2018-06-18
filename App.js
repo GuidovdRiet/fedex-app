@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import { TabNavigator, StackNavigator } from "react-navigation";
 import { Icon } from "react-native-elements";
 import io from "socket.io-client";
@@ -15,7 +14,7 @@ const LoginContext = React.createContext("Login");
 console.disableYellowBox = true;
 
 class LoginContextProvider extends Component {
-  //TODO: hier consumer id plaatsen
+  
   state = {
     isLoggedIn: false,
     userId: null
@@ -103,7 +102,7 @@ const TabNav = TabNavigator(
       screen: DeliveryStackNavigator,
       navigationOptions: {
         tabBarIcon: (
-          <Icon name="package-down" type="material-community" color="#fff" />
+          <Icon name="ios-analytics" type="ionicon" color="#fff" />
         ),
         tabBarLabel: "Delivery"
       }
@@ -112,7 +111,7 @@ const TabNav = TabNavigator(
       screen: LoginStackNavigator,
       navigationOptions: {
         tabBarIcon: (
-          <Icon name="account" type="material-community" color="#fff" />
+          <Icon name="ios-contact" type="ionicon" color="#fff" />
         ),
         tabBarLabel: "Account"
       }

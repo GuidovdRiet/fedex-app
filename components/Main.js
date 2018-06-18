@@ -15,7 +15,13 @@ class Main extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props);
+    if (this.props.socketClient) {
+      console.log("CLIENT");
+      this.props.socketClient.on("delivery:init", pl => {
+        console.log("INIT", pl);
+      });
+    }
+
     if (!this.props.isLoggedIn) {
       // const newStack = NavigationActions.reset({
       //   index: 0,
