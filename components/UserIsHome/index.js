@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { TouchableWithoutFeedback, Keyboard, Text } from "react-native";
+import { deliveryId } from "../constants";
 
 class AddNote extends Component {
   static navigationOptions = {
@@ -18,6 +19,10 @@ class AddNote extends Component {
   sendNote(note) {
     console.log(note);
     const { navigate } = this.props.navigation;
+    this.props.socketClient.emit("delivery:change-note", {
+      note,
+      deliveryId
+    });
     navigate("DeliveryMap", { name: "DeliveryMap" });
   }
 
@@ -50,12 +55,6 @@ class AddNote extends Component {
             value={this.state.text}
           />
           <ButtonContainer>
-            <SendNoteContainer
-              onPress={() => this.sendNote(this.state.text)}
-              underlayColor="#7FC285"
-            >
-              <SendNoteButton>Submit</SendNoteButton>
-            </SendNoteContainer>
             <SkipNoteContainer
               onPress={() => {
                 this.skipNote();
@@ -64,6 +63,12 @@ class AddNote extends Component {
             >
               <SkipNoteButton>Skip</SkipNoteButton>
             </SkipNoteContainer>
+            <SendNoteContainer
+              onPress={() => this.sendNote(this.state.text)}
+              underlayColor="#7FC285"
+            >
+              <SendNoteButton>Submit</SendNoteButton>
+            </SendNoteContainer>
           </ButtonContainer>
         </AddNoteContainer>
       </TouchableWithoutFeedback>
@@ -122,7 +127,7 @@ const SendNoteButton = styled.Text`
 
 const SkipNoteContainer = styled(SendNoteContainer)`
   background-color: #cecece;
-  margin-left: 10px;
+  margin-right: 10px;
 `;
 
 const SkipNoteButton = styled(SendNoteButton)``;

@@ -120,6 +120,10 @@ const TabNav = TabNavigator(
   },
   {
     tabBarOptions: {
+      activeTintColor: '#ffffff',
+      labelStyle: {
+        fontSize: 12,
+      },
       style: {
         backgroundColor: "#4D1C8A"
       }

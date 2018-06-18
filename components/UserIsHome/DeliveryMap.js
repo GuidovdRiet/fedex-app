@@ -3,7 +3,7 @@ import { Dimensions, StyleSheet, Image } from "react-native";
 import MapView from "react-native-maps";
 import MapViewDirections from "react-native-maps-directions";
 import styled from "styled-components";
-import popUp from './Popup';
+import popUp from "./Popup";
 import Popup from "./Popup";
 
 const { width, height } = Dimensions.get("window");
@@ -110,9 +110,13 @@ class DeliveryMap extends Component {
             <DelivererName>Michael Frattaroli</DelivererName>
           </MapInfoTextContainer>
         </MapInfoContainer>
-        <PopUpContainer>
-          {this.state.showPopup ? <Popup/> : ''}
-        </PopUpContainer>
+        {this.state.showPopup ? (
+          <PopUpContainer>
+            <Popup />
+          </PopUpContainer>
+        ) : (
+          ""
+        )}
       </MapContainer>
     );
   }
