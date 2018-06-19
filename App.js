@@ -14,7 +14,6 @@ const LoginContext = React.createContext("Login");
 console.disableYellowBox = true;
 
 class LoginContextProvider extends Component {
-  
   state = {
     isLoggedIn: false,
     userId: null
@@ -85,10 +84,10 @@ const mapSocketClientToNavigation = Component => {
 };
 
 const DeliveryStackNavigator = StackNavigator({
-  DeliveryMap: { screen: mapSocketClientToNavigation(DeliveryMap) },
   Home: { screen: mapSocketClientToNavigation(Main) },
   AddNote: { screen: mapSocketClientToNavigation(AddNote) },
-  UserIsNotHome: { screen: mapSocketClientToNavigation(UserIsNotHome) }
+  UserIsNotHome: { screen: mapSocketClientToNavigation(UserIsNotHome) },
+  DeliveryMap: { screen: mapSocketClientToNavigation(DeliveryMap) }
 });
 
 const LoginStackNavigator = StackNavigator({
@@ -101,27 +100,23 @@ const TabNav = TabNavigator(
     Delivery: {
       screen: DeliveryStackNavigator,
       navigationOptions: {
-        tabBarIcon: (
-          <Icon name="ios-analytics" type="ionicon" color="#fff" />
-        ),
+        tabBarIcon: <Icon name="ios-analytics" type="ionicon" color="#fff" />,
         tabBarLabel: "Delivery"
       }
     },
     Account: {
       screen: LoginStackNavigator,
       navigationOptions: {
-        tabBarIcon: (
-          <Icon name="ios-contact" type="ionicon" color="#fff" />
-        ),
+        tabBarIcon: <Icon name="ios-contact" type="ionicon" color="#fff" />,
         tabBarLabel: "Account"
       }
     }
   },
   {
     tabBarOptions: {
-      activeTintColor: '#ffffff',
+      activeTintColor: "#ffffff",
       labelStyle: {
-        fontSize: 12,
+        fontSize: 12
       },
       style: {
         backgroundColor: "#4D1C8A"

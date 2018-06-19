@@ -45,7 +45,7 @@ class DeliveryMap extends Component {
 
   setCoordinates = e => {
     const deliveryTimeInMin =
-      this.state.deliveryTime - Math.floor(Math.random() * 3);
+      this.state.deliveryTime - Math.ceil(Math.random() * 3);
     this.setState({
       coordinates: [this.state.coordinates[0], e.nativeEvent.coordinate],
       deliveryTime: deliveryTimeInMin <= 0 ? 0 : deliveryTimeInMin,
